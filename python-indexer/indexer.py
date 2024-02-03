@@ -1,6 +1,3 @@
-
-# this is for making the swf section of the file-z list.
-
 import os
 
 def generate_html_links(directory_path):
@@ -12,7 +9,7 @@ def generate_html_links(directory_path):
         print("No SWF files found in the specified directory.")
         return ""
 
-    # Sort the list of SWF files
+    # Sort the list of SWF files alphabetically
     swf_files.sort()
 
     # Identify and remove duplicates
@@ -27,7 +24,7 @@ def generate_html_links(directory_path):
         for duplicate in duplicates:
             html_content += f'<!-- {duplicate} -->\n'
 
-    for swf_file in unique_swf_files:
+    for swf_file in sorted(unique_swf_files):  # Explicitly sort here
         swf_url = f"https://raw.githubusercontent.com/MegaTheLEGEND/swf-storage/master/{swf_file}"
         html_content += f'<a href="./gfiles/flash/index.html?swf={swf_url}">{swf_file.replace(".swf", "")}</a>\n'
 
